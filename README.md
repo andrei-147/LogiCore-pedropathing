@@ -28,6 +28,9 @@ dependencies {
     // Add the LogiCore core library and the PedroPathing wrapper layer
     implementation 'com.github.andrei-147:LogiCore:1.0.0'
     implementation 'com.github.andrei-147:LogiCore-pedropathing:1.0.0'
+    // Also add the PedroPathing dependencies
+    implementation 'com.pedropathing:revhub:3.0.0'
+    implementation 'com.pedropathing:tuning:1.0.0'
 }
 ```
 
