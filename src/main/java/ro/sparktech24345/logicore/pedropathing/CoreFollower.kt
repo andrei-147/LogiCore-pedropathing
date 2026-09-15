@@ -1,6 +1,7 @@
 package ro.sparktech24345.logicore.pedropathing
 
 import com.pedropathing.api.PoseFactory
+import com.pedropathing.drivetrain.DrivePowers
 import com.pedropathing.follower.Follower
 import com.pedropathing.math.Pose
 import ro.sparktech24345.logicore.core.CoreModule
@@ -56,6 +57,15 @@ class CoreFollower<T: FollowerConstants>(
 
     val lenientFinish: Boolean
         get() = abs(follower.tangentialVelocity()) < velocityConstraint && distanceToEnd < 4
+
+    val manualMode: Boolean
+        get() = follower.mode() == Follower.Mode.MANUAL
+
+    var manualPower = DrivePowers(0.0, 0.0, 0.0)
+        set(value) {
+            field = value
+            follower.manual(value)
+        }
 
     fun follow(path: Path) = follower.follow(path)
 
