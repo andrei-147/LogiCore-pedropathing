@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.library' version '8.13.2'
+    id 'org.jetbrains.kotlin.android' version '2.2.20'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'ro.sparktech24345.logicore'
+    //noinspection GradleDependency
+    compileSdk 30
+
+    defaultConfig {
+        minSdk 24
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 28
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.firstinspires.ftc') {
+                details.useVersion '12.0.0'
+            }
+        }
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+dependencies {
+    //noinspection Aligned16KB
+    compileOnly 'org.firstinspires.ftc:RobotCore:12.0.0'
+    compileOnly 'org.firstinspires.ftc:Hardware:12.0.0'
+    compileOnly 'org.firstinspires.ftc:FtcCommon:12.0.0'
+    compileOnly 'org.firstinspires.ftc:Vision:12.0.0'
+
+    compileOnly 'com.github.andrei-147:LogiCore:1.0.1'
+    compileOnly 'com.pedropathing:revhub:3.0.0'
+    compileOnly 'com.pedropathing:tuning:1.0.0'
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.andrei-147'
+                artifactId = 'LogiCore-pedropathing'
+                version = project.version 
+            }
+        }
+    }
+}
