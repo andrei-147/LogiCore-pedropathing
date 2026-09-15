@@ -46,7 +46,7 @@ dependencies {
     compileOnly 'org.firstinspires.ftc:FtcCommon:12.0.0'
     compileOnly 'org.firstinspires.ftc:Vision:12.0.0'
 
-    compileOnly 'com.github.andrei-147:LogiCore:main-SNAPSHOT'
+    compileOnly 'com.github.andrei-147:LogiCore:1.0.0'
     compileOnly 'com.pedropathing:revhub:3.0.0'
     compileOnly 'com.pedropathing:tuning:1.0.0'
 }
