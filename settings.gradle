@@ -4,6 +4,10 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {
+        id 'com.android.library' version '8.13.2'
+        id 'org.jetbrains.kotlin.android' version '2.2.20'
+    }
 }
 
 dependencyResolutionManagement {
@@ -13,7 +17,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
 
-        maven { url = uri("https://maven.brott.dev/") }
         maven { url = uri("https://repo.dairy.foundation/releases") }
         maven { url = uri("https://jitpack.io") }
     }

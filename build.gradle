@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.library' version '8.13.2'
-    id 'org.jetbrains.kotlin.android' version '2.2.20'
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
 
@@ -30,13 +30,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    configurations.configureEach {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            if (details.requested.group == 'org.firstinspires.ftc') {
-                details.useVersion '12.0.0'
-            }
-        }
-    }
+    // Removed resolutionStrategy to avoid polluting the root project
 
     publishing {
         singleVariant("release") {
@@ -52,7 +46,7 @@ dependencies {
     compileOnly 'org.firstinspires.ftc:FtcCommon:12.0.0'
     compileOnly 'org.firstinspires.ftc:Vision:12.0.0'
 
-    compileOnly 'com.github.andrei-147:LogiCore:1.0.1'
+    compileOnly project(':LogiCore')
     compileOnly 'com.pedropathing:revhub:3.0.0'
     compileOnly 'com.pedropathing:tuning:1.0.0'
 }
